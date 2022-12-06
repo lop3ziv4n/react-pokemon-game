@@ -20,7 +20,7 @@ const PokemonGame = () => {
         setLoading(true);
         const pokemons = await getPokemons();
         setOptionsPokeData(pokemons);
-        const chosenPokemon = pokemons[randomNumber(1, 4)];
+        const chosenPokemon = pokemons[randomNumber(0, 3)];
         setChosenPokeData(chosenPokemon);
         setLoading(false);
         setShowFront(false);
