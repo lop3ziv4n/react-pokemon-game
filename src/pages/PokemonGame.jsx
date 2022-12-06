@@ -6,6 +6,7 @@ import {getPokemons, randomNumber} from '../utils/api';
 import Loading from '../components/Loading';
 import PokemonCard from '../components/PokemonCard';
 import GameHelp from '../components/GameHelp';
+import NoData from '../components/NoData';
 
 
 const PokemonGame = () => {
@@ -67,28 +68,32 @@ const PokemonGame = () => {
                 loading ?
                     <Loading/>
                     :
-                    <div>
-                        <div className="row justify-content-around p-3">
-                            <div className="col-lg-4 pb-lg-0 pb-3">
-                                <GameHint/>
+                    optionsPokeData.length > 0
+                        ?
+                        <div>
+                            <div className="row justify-content-around p-3">
+                                <div className="col-lg-4 pb-lg-0 pb-3">
+                                    <GameHint/>
+                                </div>
+                                <div className="col-lg-4 col-sm-6 pb-lg-0 pb-3">
+                                    <PokemonCard pokemon={chosenPokeData} showFront={showFront}/>
+                                </div>
+                                <div className="col-lg-4 col-sm-6">
+                                    <GameHelp pokemon={chosenPokeData}/>
+                                </div>
                             </div>
-                            <div className="col-lg-4 col-sm-6 pb-lg-0 pb-3">
-                                <PokemonCard pokemon={chosenPokeData} showFront={showFront}/>
-                            </div>
-                            <div className="col-lg-4 col-sm-6">
-                                <GameHelp pokemon={chosenPokeData}/>
+                            <div className="row">
+                                {
+                                    optionsPokeData.map((item) => (
+                                        <div className="col-lg-4 col-sm-6 p-3" key={item.id}>
+                                            <PokemonCard key={item.id} pokemon={item} showFront={true}
+                                                         validate={validate}/>
+                                        </div>
+                                    ))
+                                }
                             </div>
                         </div>
-                        <div className="row">
-                            {
-                                optionsPokeData.map((item) => (
-                                    <div className="col-lg-4 col-sm-6 p-3" key={item.id}>
-                                        <PokemonCard key={item.id} pokemon={item} showFront={true} validate={validate}/>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
+                        : <NoData/>
             }
         </div>
     );
