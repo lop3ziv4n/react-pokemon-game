@@ -93,7 +93,8 @@ const PokemonGame = () => {
                                 }
                             </div>
                         </div>
-                        : <NoData/>
+                        :
+                        <NoData/>
             }
         </div>
     );
