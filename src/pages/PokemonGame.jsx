@@ -69,20 +69,20 @@ const PokemonGame = () => {
                     :
                     <div>
                         <div className="row justify-content-around p-3">
-                            <div className="col-lg-4">
+                            <div className="col-lg-4 pb-lg-0 pb-3">
                                 <GameHint/>
                             </div>
-                            <div className="col-lg-4">
+                            <div className="col-lg-4 col-sm-6 pb-lg-0 pb-3">
                                 <PokemonCard pokemon={chosenPokeData} showFront={showFront}/>
                             </div>
-                            <div className="col-lg-4">
+                            <div className="col-lg-4 col-sm-6">
                                 <GameHelp pokemon={chosenPokeData}/>
                             </div>
                         </div>
                         <div className="row">
                             {
                                 optionsPokeData.map((item) => (
-                                    <div className="col-lg-4 col-md-5 p-3" key={item.id}>
+                                    <div className="col-lg-4 col-sm-6 p-3" key={item.id}>
                                         <PokemonCard key={item.id} pokemon={item} showFront={true} validate={validate}/>
                                     </div>
                                 ))
